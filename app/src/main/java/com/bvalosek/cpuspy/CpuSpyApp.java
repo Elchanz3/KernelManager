@@ -11,8 +11,8 @@ package com.bvalosek.cpuspy;
 import android.content.Context;
 import android.util.SparseArray;
 
-import com.xxmustafacooTR.kernelmanager.utils.AppSettings;
-import com.xxmustafacooTR.kernelmanager.utils.Utils;
+import com.luk.kernelmanager.utils.AppSettings;
+import com.luk.kernelmanager.utils.Utils;
 
 /**
  * main application class

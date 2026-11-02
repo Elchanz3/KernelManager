@@ -6,8 +6,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.xxmustafacooTR.kernelmanager.R;
-import com.xxmustafacooTR.kernelmanager.utils.kernel.sound.MoroSound;
+import com.luk.kernelmanager.R;
+import com.luk.kernelmanager.utils.kernel.sound.MoroSound;
 
 import androidx.appcompat.widget.AppCompatTextView;
 

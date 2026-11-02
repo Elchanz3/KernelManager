@@ -22,8 +22,8 @@ import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.github.javiersantos.appupdater.objects.GitHub;
 import com.github.javiersantos.appupdater.objects.Update;
 import com.github.javiersantos.appupdater.objects.Version;
-import com.xxmustafacooTR.kernelmanager.R;
-import com.xxmustafacooTR.kernelmanager.utils.Utils;
+import com.luk.kernelmanager.R;
+import com.luk.kernelmanager.utils.Utils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -354,7 +354,7 @@ class UtilsLibrary {
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         Uri uriFile;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            uriFile = FileProvider.getUriForFile(context, "com.xxmustafacooTR.kernelmanager.provider", file);
+            uriFile = FileProvider.getUriForFile(context, "com.luk.kernelmanager.provider", file);
         } else {
             uriFile = Uri.fromFile(file);
         }

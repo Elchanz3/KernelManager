@@ -1422,7 +1422,7 @@
     <!--<string name="about_me">Hi, I\'m MoroGoku, developer of MoRoKernel of Samsung S7. This app is a mod of \"thunderstorm.ThunderTweaks\" of Willi Ye, aka Grarak. I make this mod for compatibilize thunderstorm.ThunderTweaks with Galaxy S7 smartphone, and add some new options. Thanks Willi for this great app.</string>-->
     <!--<string name="about_me">Hi, I\'m Corsicanu, developer of hadesKernel.\nThis app is a mod of \"MTweaks\" by MoroGoku, properly adaptated to exynos7870/7880/7884/7885/7904 devices (maybe even more).\n\nThanks Willi for this great app, special thanks to MoroGoku for his awesome MTweaks app.</string>-->
     <!--<string name="about_me">Hi, I\'m @nalas XDA, developer of ThundeRStormS Kernel.\nThis app is a mod of \"hKtweaks"\ by corsicanu and \"MTweaks\" by MoroGoku, properly adaptated to exynos7870/7880/7884/7885/7904/8890/8895/9810/9820 devices (maybe even more).\n\nThanks Willi for this great app, special thanks to MoroGoku and corsicanu for their awesome hkTweaks and MTweaks apps. Thanks for Rohan D. and graphics projects for XDA@Franz S. and XDA@phghost, @nckmml, XDA@VHFG22, @Game Over, XDA@matt_988 and XDA@Kyo-Ito</string>-->
-    <string name="about_me">Hi, I\'m @xxmustafacooTR, developer of xxTR Kernel.\nThis app is a mod of \"ThunderTweaks"\ by @nalas XDA and \"hKtweaks"\ by corsicanu and \"MTweaks\" by MoroGoku, adapted only to exynos9810 devices.\n\nThanks Willi for this great app, special thanks to Nalas, MoroGoku and corsicanu for their awesome ThunderTweaks, hkTweaks and MTweaks apps. Thanks for Rohan D. and graphics projects for XDA@Franz S. and XDA@phghost, @nckmml, XDA@VHFG22, @Game Over, XDA@matt_988 and XDA@Kyo-Ito</string>
+    <string name="about_me">Hi, this is LuK Manager, made for LuK Kernel.\nIt is a fork of \"xxTR Manager\" by @xxmustafacooTR, which is a mod of \"ThunderTweaks"\ by @nalas XDA and \"hKtweaks"\ by corsicanu and \"MTweaks\" by MoroGoku, adapted to exynos9825 devices.\n\nThanks xxmustafacooTR and Willi for this great app, special thanks to Nalas, MoroGoku and corsicanu for their awesome ThunderTweaks, hkTweaks and MTweaks apps. Thanks for Rohan D. and graphics projects for XDA@Franz S. and XDA@phghost, @nckmml, XDA@VHFG22, @Game Over, XDA@matt_988 and XDA@Kyo-Ito</string>
     <string name="libraries_used">Libraries used</string>
 
     <!-- Donation -->
@@ -1463,7 +1463,7 @@
     <string name="appupdater_btn_dismiss">Dismiss</string>
     <string name="appupdater_download_filed">Download FAILED!</string>
     <string name="appupdater_downloading_file">Downloading</string>
-    <string name="appupdater_json">https://raw.githubusercontent.com/xxmustafacooTR/KernelManager/main/app/update.json</string>
+    <string name="appupdater_json">https://raw.githubusercontent.com/luk/KernelManager/main/app/update.json</string>
 	<string name="battery_health">Battery Health</string>
     <string name="mdnie">Force screen to use all colors at max</string>
     <string name="mif">MIF</string>

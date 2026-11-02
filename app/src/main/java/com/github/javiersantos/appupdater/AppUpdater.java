@@ -17,7 +17,7 @@ import com.github.javiersantos.appupdater.enums.Duration;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.github.javiersantos.appupdater.objects.GitHub;
 import com.github.javiersantos.appupdater.objects.Update;
-import com.xxmustafacooTR.kernelmanager.R;
+import com.luk.kernelmanager.R;
 
 public class AppUpdater implements IAppUpdater {
     private Context context;

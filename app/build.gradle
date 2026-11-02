@@ -4,7 +4,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 android {
     compileSdk 34
     defaultConfig {
-        applicationId 'com.xxmustafacooTR.kernelmanager'
+        applicationId 'com.luk.kernelmanager'
         minSdkVersion 27
         //noinspection ExpiredTargetSdkVersion,OldTargetApi
         targetSdkVersion 29
@@ -41,7 +41,7 @@ android {
     lint {
         abortOnError false
     }
-    namespace 'com.xxmustafacooTR.kernelmanager'
+    namespace 'com.luk.kernelmanager'
     android.applicationVariants.configureEach { final variant ->
         variant.outputs.configureEach {
             outputFileName = "LuK_Manager_v${variant.versionName}.apk"

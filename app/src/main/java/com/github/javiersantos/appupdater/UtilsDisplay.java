@@ -13,7 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
-import com.xxmustafacooTR.kernelmanager.R;
+import com.luk.kernelmanager.R;
 
 import java.net.URL;
 

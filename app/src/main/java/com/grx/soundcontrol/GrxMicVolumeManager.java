@@ -14,11 +14,11 @@ import android.widget.LinearLayout;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SwitchCompat;
 
-import com.xxmustafacooTR.kernelmanager.R;
-import com.xxmustafacooTR.kernelmanager.database.Settings;
-import com.xxmustafacooTR.kernelmanager.utils.AppSettings;
-import com.xxmustafacooTR.kernelmanager.utils.kernel.sound.MoroSound;
-import com.xxmustafacooTR.kernelmanager.views.recyclerview.RecyclerViewItem;
+import com.luk.kernelmanager.R;
+import com.luk.kernelmanager.database.Settings;
+import com.luk.kernelmanager.utils.AppSettings;
+import com.luk.kernelmanager.utils.kernel.sound.MoroSound;
+import com.luk.kernelmanager.views.recyclerview.RecyclerViewItem;
 
 import java.util.HashMap;
 
