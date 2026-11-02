@@ -8,8 +8,8 @@ android {
         minSdkVersion 27
         //noinspection ExpiredTargetSdkVersion,OldTargetApi
         targetSdkVersion 29
-        versionCode 4604
-        versionName "46.0-Beta4"
+        versionCode 1
+        versionName "1.0.0-rc"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
