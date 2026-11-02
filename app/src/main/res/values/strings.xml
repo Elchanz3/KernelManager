@@ -1562,7 +1562,7 @@
     <string name="glove_mode_enable">Enable Glove Mode</string>
     <string name="glove_mode_disable">Disable Glove Mode</string>
     <string name="alternative_icon">Alternative Icon</string>
-    <string name="app_name_alt">Noble Kernel Manager</string>
+    <string name="app_name_alt">LuK Manager</string>
     <string name="gpu_unlock">Unlock Frequencies</string>
     <string name="gpu_unlock_summary">Remove system/driver limitations. Force minimum frequency to minimum possible and maximum frequency to maximum possible.</string>
     <string name="cpu_unlock">Cpu Frequency Unlock</string>
