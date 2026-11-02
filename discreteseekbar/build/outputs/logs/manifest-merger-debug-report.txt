@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml:17:1-24:12
+INJECTED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml:17:1-24:12
+	package
+		INJECTED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml
+application
+ADDED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml:20:5-22:19
+uses-sdk
+INJECTED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml
+INJECTED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/AndroidManifest.xml

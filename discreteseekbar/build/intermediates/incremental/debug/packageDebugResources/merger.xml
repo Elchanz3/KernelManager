@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/res"><file name="dsb_progress_color_list" path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/res/color/dsb_progress_color_list.xml" qualifiers="" type="color"/><file name="dsb_ripple_color_list" path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/res/color/dsb_ripple_color_list.xml" qualifiers="" type="color"/><file name="dsb_track_color_list" path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/res/color/dsb_track_color_list.xml" qualifiers="" type="color"/><file path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/res/values/attrs.xml" qualifiers=""><declare-styleable name="Theme">
+      <attr format="reference" name="discreteSeekBarStyle"/>
+    </declare-styleable><declare-styleable name="DiscreteSeekBar">
+        <attr format="integer|dimension" name="dsb_min"/>
+        <attr format="integer|dimension" name="dsb_max"/>
+        <attr format="integer|dimension" name="dsb_value"/>
+        <attr format="boolean" name="dsb_mirrorForRtl"/>
+        <attr format="boolean" name="dsb_allowTrackClickToDrag"/>
+        <attr format="color|reference" name="dsb_progressColor"/>
+        <attr format="color|reference" name="dsb_trackColor"/>
+        <attr format="reference" name="dsb_indicatorTextAppearance"/>
+        <attr format="color|reference" name="dsb_indicatorColor"/>
+        <attr format="dimension" name="dsb_indicatorElevation"/>
+        <attr format="string|reference" name="dsb_indicatorFormatter"/>
+        <attr format="color|reference" name="dsb_rippleColor"/>
+        <attr format="boolean" name="dsb_indicatorPopupEnabled"/>
+        <attr format="integer|dimension" name="dsb_trackHeight"/>
+        <attr format="integer|dimension" name="dsb_scrubberHeight"/>
+        <attr format="integer|dimension" name="dsb_thumbSize"/>
+        <attr format="integer|dimension" name="dsb_indicatorSeparation"/>
+    </declare-styleable></file><file path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/main/res/values/styles.xml" qualifiers=""><color name="dsb_progress_color">#ff009688</color><color name="dsb_track_color">#ff939393</color><color name="dsb_disabled_color">#66939393</color><color name="dsb_ripple_color_pressed">#77939393</color><color name="dsb_ripple_color_focused">#99999999</color><style name="Widget.DiscreteSeekBar" parent="android:Widget">
+        <item name="dsb_indicatorTextAppearance">@style/Widget.DiscreteIndicatorTextAppearance</item>
+        <item name="dsb_progressColor">@color/dsb_progress_color_list</item>
+        <item name="dsb_trackColor">@color/dsb_track_color_list</item>
+        <item name="dsb_rippleColor">@color/dsb_ripple_color_list</item>
+        <item name="dsb_indicatorColor">@color/dsb_progress_color</item>
+        <item name="dsb_indicatorElevation">4dp</item>
+        <item name="dsb_mirrorForRtl">true</item>
+    </style><style name="Widget.DiscreteIndicatorTextAppearance" parent="android:TextAppearance.Small">
+        <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+        <item name="android:padding">6dp</item>
+    </style></file></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/chanz22/Documents/GitHub/KernelManager/discreteseekbar/build/generated/res/resValues/debug"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="Theme">
+      <attr format="reference" name="discreteSeekBarStyle"/>
+    </declare-styleable><declare-styleable name="DiscreteSeekBar">
+        <attr format="integer|dimension" name="dsb_min"/>
+        <attr format="integer|dimension" name="dsb_max"/>
+        <attr format="integer|dimension" name="dsb_value"/>
+        <attr format="boolean" name="dsb_mirrorForRtl"/>
+        <attr format="boolean" name="dsb_allowTrackClickToDrag"/>
+        <attr format="color|reference" name="dsb_progressColor"/>
+        <attr format="color|reference" name="dsb_trackColor"/>
+        <attr format="reference" name="dsb_indicatorTextAppearance"/>
+        <attr format="color|reference" name="dsb_indicatorColor"/>
+        <attr format="dimension" name="dsb_indicatorElevation"/>
+        <attr format="string|reference" name="dsb_indicatorFormatter"/>
+        <attr format="color|reference" name="dsb_rippleColor"/>
+        <attr format="boolean" name="dsb_indicatorPopupEnabled"/>
+        <attr format="integer|dimension" name="dsb_trackHeight"/>
+        <attr format="integer|dimension" name="dsb_scrubberHeight"/>
+        <attr format="integer|dimension" name="dsb_thumbSize"/>
+        <attr format="integer|dimension" name="dsb_indicatorSeparation"/>
+    </declare-styleable></configuration></mergedItems></merger>

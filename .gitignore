@@ -11,4 +11,5 @@ theme_generator
 /themes
 /app/build
 .gradle/buildOutputCleanup
-.idea/workspace.xml
+.idea/workspace.xml/discreteseekbar/build
+/circularreveal/build
