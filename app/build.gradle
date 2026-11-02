@@ -44,7 +44,7 @@ android {
     namespace 'com.xxmustafacooTR.kernelmanager'
     android.applicationVariants.configureEach { final variant ->
         variant.outputs.configureEach {
-            outputFileName = "xxTR_Manager_v${variant.versionName}.apk"
+            outputFileName = "LuK_Manager_v${variant.versionName}.apk"
         }
     }
 }

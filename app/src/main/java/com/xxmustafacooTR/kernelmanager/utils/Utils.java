@@ -253,7 +253,7 @@ public class Utils {
     }
 
     public static String getInternalDataStorage() {
-        return Environment.getExternalStorageDirectory().toString() + "/xxTR Manager";
+        return Environment.getExternalStorageDirectory().toString() + "/LuK Manager";
     }
 
     // MD5 code from

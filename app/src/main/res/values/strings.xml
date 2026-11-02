@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">xxTR Manager</string>
+    <string name="app_name">LuK Manager</string>
 
     <string name="checking_info">Checking info…</string>
     <string name="checking_root">Checking root access</string>
@@ -9,7 +9,7 @@
     <string name="no_busybox">No busybox</string>
     <string name="open">Open %s</string>
     <string name="disable">Disable</string>
-    <string name="changelog">xxTR Manager v%s</string>
+    <string name="changelog">LuK Manager v%s</string>
     <string name="changelog_message">\n* Overall Fixes\n* Unlock Freqs Switches\n* Big Cpu Temp Show\n* A workaround fix for hotplug quad change\n* Game Control Menu Updates</string>
     <string name="close">Close</string>
 
@@ -1427,8 +1427,8 @@
 
     <!-- Donation -->
     <string name="donation_title">Donation</string>
-    <string name="donation_summary_mg">Hi, xxTR Manager is an application based on \"Kernel Adiutor\" by Willi Ye, aka Grarak.\n\nIt has several new modifications and adjustments, especially for the latest Samsung Galaxy S7.\n\nI do this because I have fun and I like to share my work, that\'s why it\'s free and does not carry advertising.\n\nAlthough if you liked the work I have done and you want to donate something and invite me to a beer, as they say, you can do it in the following Paypal link.</string>
-    <string name="donation_summary">xxTR Manager is an app based on \"hKtweaks"\ by corsicanu and \"MTweaks\" by MoroGoku, properly adaptated to exynos7870/7880/7884/7885/7904/8890/8895/9810/9820 devices (maybe even more).\nIf you appreciate my work and you want to donate to support my work and provide me more coffee, you can do it on the following Paypal link.</string>
+    <string name="donation_summary_mg">Hi, LuK Manager is an application based on \"Kernel Adiutor\" by Willi Ye, aka Grarak.\n\nIt has several new modifications and adjustments, especially for the latest Samsung Galaxy S7.\n\nI do this because I have fun and I like to share my work, that\'s why it\'s free and does not carry advertising.\n\nAlthough if you liked the work I have done and you want to donate something and invite me to a beer, as they say, you can do it in the following Paypal link.</string>
+    <string name="donation_summary">LuK Manager is an app based on \"hKtweaks"\ by corsicanu and \"MTweaks\" by MoroGoku, properly adaptated to exynos7870/7880/7884/7885/7904/8890/8895/9810/9820 devices (maybe even more).\nIf you appreciate my work and you want to donate to support my work and provide me more coffee, you can do it on the following Paypal link.</string>
 
     <!-- Contributors -->
     <string name="commits">%d commits</string>

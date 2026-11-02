@@ -25,7 +25,7 @@ package com.xxmustafacooTR.kernelmanager.utils;
 
 public class Log {
 
-    private static final String TAG = "xxTR Manager";
+    private static final String TAG = "LuK Manager";
 
     public static void i(String message) {
         android.util.Log.i(TAG, getMessage(message));
