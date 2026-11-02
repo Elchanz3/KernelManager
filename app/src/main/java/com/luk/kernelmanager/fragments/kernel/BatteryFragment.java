@@ -32,6 +32,7 @@ import com.luk.kernelmanager.fragments.recyclerview.RecyclerViewFragment;
 import com.luk.kernelmanager.utils.AppSettings;
 import com.luk.kernelmanager.utils.Utils;
 import com.luk.kernelmanager.utils.kernel.battery.Battery;
+import com.luk.kernelmanager.utils.kernel.soc.SocNode;
 import com.luk.kernelmanager.views.recyclerview.CardView;
 import com.luk.kernelmanager.views.recyclerview.RecyclerViewItem;
 import com.luk.kernelmanager.views.recyclerview.SeekBarView;
@@ -95,6 +96,9 @@ public class BatteryFragment extends RecyclerViewFragment {
         } else {
             levelInit(items);
             voltageInit(items);
+        }
+        if (SocNode.exists(SLATE_MODE)) {
+            slateModeInit(items);
         }
         if (mBattery.hasForceFastCharge()) {
             forceFastChargeInit(items);
@@ -947,4 +951,24 @@ public class BatteryFragment extends RecyclerViewFragment {
         }
     }
 
+
+    // Samsung sec-battery slate mode: BUCK_OFF, the charger input is turned off
+    // and the phone runs on battery as if unplugged. Not recorded for Apply on
+    // Boot, so it can never stay on across reboots and stop all charging.
+    private static final String SLATE_MODE = "/sys/class/power_supply/battery/batt_slate_mode";
+
+    private void slateModeInit(List<RecyclerViewItem> items) {
+        CardView card = new CardView(getActivity());
+        card.setTitle(getString(R.string.slate_mode_card));
+        SwitchView slate = new SwitchView();
+        slate.setTitle(getString(R.string.slate_mode));
+        slate.setSummary(getString(R.string.slate_mode_summary));
+        slate.setChecked(SocNode.readInt(SLATE_MODE, 0) != 0);
+        slate.addOnSwitchListener((view, isChecked) -> new Thread(() ->
+                com.luk.kernelmanager.utils.root.RootUtils.runCommand(
+                        com.luk.kernelmanager.utils.root.Control.write(isChecked ? "1" : "0",
+                                SLATE_MODE))).start());
+        card.addItem(slate);
+        items.add(card);
+    }
 }

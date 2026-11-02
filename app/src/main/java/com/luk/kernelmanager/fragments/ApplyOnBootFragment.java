@@ -45,7 +45,10 @@ import com.luk.kernelmanager.fragments.kernel.EntropyFragment;
 import com.luk.kernelmanager.fragments.kernel.GPUFragment;
 // import com.luk.kernelmanager.fragments.kernel.SpectrumFragment;
 import com.luk.kernelmanager.fragments.kernel.DvfsFragment;
+import com.luk.kernelmanager.fragments.kernel.BusFreqFragment;
 import com.luk.kernelmanager.fragments.kernel.GameFragment;
+import com.luk.kernelmanager.fragments.kernel.SchedulerFragment;
+import com.luk.kernelmanager.fragments.kernel.ThermalZonesFragment;
 import com.luk.kernelmanager.fragments.kernel.HmpFragment;
 import com.luk.kernelmanager.fragments.kernel.IOFragment;
 import com.luk.kernelmanager.fragments.kernel.KSMFragment;
@@ -101,6 +104,9 @@ public class ApplyOnBootFragment extends BaseFragment {
     public static final String MISC = "misc_onboot";
     public static final String POWER = "power_onboot";
     public static final String GAME = "game_onboot";
+    public static final String BUS_FREQ = "busfreq_onboot";
+    public static final String THERMAL_ZONES = "thermalzones_onboot";
+    public static final String SCHED = "sched_onboot";
 
     private static final HashMap<Class, String> sAssignments = new HashMap<>();
 
@@ -134,6 +140,9 @@ public class ApplyOnBootFragment extends BaseFragment {
         sAssignments.put(MiscFragment.class, MISC);
         sAssignments.put(PowerFragment.class, POWER);
         sAssignments.put(GameFragment.class, GAME);
+        sAssignments.put(BusFreqFragment.class, BUS_FREQ);
+        sAssignments.put(ThermalZonesFragment.class, THERMAL_ZONES);
+        sAssignments.put(SchedulerFragment.class, SCHED);
     }
 
     public static String getAssignment(Class fragment) {

@@ -31,8 +31,10 @@ import com.luk.kernelmanager.utils.kernel.gpu.GPUFreq;
 import com.luk.kernelmanager.utils.kernel.gpu.GPUFreqExynos;
 import com.luk.kernelmanager.utils.kernel.gpu.GPUFreqTmu;
 import com.luk.kernelmanager.utils.kernel.gpu.SimpleGPU;
+import com.luk.kernelmanager.utils.kernel.soc.SocNode;
 import com.luk.kernelmanager.views.recyclerview.CardView;
 import com.luk.kernelmanager.views.recyclerview.DescriptionView;
+import com.luk.kernelmanager.views.recyclerview.GenericSelectView;
 import com.luk.kernelmanager.views.recyclerview.RecyclerViewItem;
 import com.luk.kernelmanager.views.recyclerview.SeekBarView;
 import com.luk.kernelmanager.views.recyclerview.SelectView;
@@ -112,6 +114,98 @@ public class GPUFragment extends RecyclerViewFragment {
         if (AdrenoBoost.hasAdrenoBoost()) {
             adrenoboostInit(items);
         }
+        if (SocNode.exists(MALI + "dvfs_max_lock")) {
+            maliExynosInit(items);
+        }
+    }
+
+    // Exynos Mali platform nodes not covered above (bv_r51p0 gpex sysfs).
+    // dvfs_*_lock: "0" unlocks, a clock locks; reads "-1" or "locked / requested".
+    private static final String MALI = "/sys/devices/platform/18500000.mali/";
+    private static final String KGPU = "/sys/kernel/gpu/";
+
+    private void maliExynosInit(List<RecyclerViewItem> items) {
+        CardView card = new CardView(getActivity());
+        card.setTitle(getString(R.string.soc_mali));
+
+        List<Integer> clocks = SocNode.readIntList(MALI + "dvfs_table");
+        if (!clocks.isEmpty()) {
+            card.addItem(maliLock(getString(R.string.soc_gpu_max_lock), MALI + "dvfs_max_lock", clocks));
+            card.addItem(maliLock(getString(R.string.soc_gpu_min_lock), MALI + "dvfs_min_lock", clocks));
+        }
+        if (SocNode.exists(MALI + "dvfs_period")) {
+            card.addItem(maliNumber(getString(R.string.soc_dvfs_period), MALI + "dvfs_period"));
+        }
+        if (SocNode.exists(MALI + "polling_speed")) {
+            card.addItem(maliNumber(getString(R.string.soc_polling_speed), MALI + "polling_speed"));
+        }
+        if (SocNode.exists(KGPU + "gpu_poweroff_delay")) {
+            card.addItem(maliNumber(getString(R.string.soc_poweroff_delay), KGPU + "gpu_poweroff_delay"));
+        }
+        if (SocNode.exists(KGPU + "gpu_cl_boost_disable")) {
+            SwitchView clBoost = new SwitchView();
+            clBoost.setTitle(getString(R.string.soc_cl_boost));
+            clBoost.setSummary(getString(R.string.soc_cl_boost_summary));
+            clBoost.setChecked(SocNode.readInt(KGPU + "gpu_cl_boost_disable", 0) == 0);
+            clBoost.addOnSwitchListener((view, isChecked) -> SocNode.write(
+                    KGPU + "gpu_cl_boost_disable", isChecked ? "0" : "1",
+                    ApplyOnBootFragment.GPU, getActivity()));
+            card.addItem(clBoost);
+        }
+        String asv = SocNode.read(MALI + "asv_table");
+        if (!asv.isEmpty()) {
+            DescriptionView table = new DescriptionView();
+            table.setTitle(getString(R.string.soc_asv_table));
+            StringBuilder text = new StringBuilder();
+            for (String line : asv.split("\n")) {
+                String[] cols = line.split(",");
+                if (cols.length != 2) continue;
+                try {
+                    int khz = Integer.parseInt(cols[0].trim());
+                    int uv = Integer.parseInt(cols[1].trim());
+                    text.append(khz / 1000).append(" MHz — ").append(uv / 1000.0).append(" mV\n");
+                } catch (NumberFormatException ignored) {
+                }
+            }
+            table.setSummary(text.toString().trim());
+            card.addItem(table);
+        }
+        if (card.size() > 0) {
+            items.add(card);
+        }
+    }
+
+    private SelectView maliLock(String title, String path, List<Integer> clocks) {
+        List<String> labels = new ArrayList<>();
+        labels.add(getString(R.string.soc_unlocked));
+        for (int clock : clocks) labels.add(SocNode.mhz(clock));
+        SelectView select = new SelectView();
+        select.setTitle(title);
+        select.setItems(labels);
+        int current = SocNode.readInt(path, -1);
+        int index = clocks.indexOf(current);
+        select.setItem(index >= 0 ? index + 1 : 0);
+        select.setOnItemSelected((view, position, item) -> SocNode.write(path,
+                position == 0 ? "0" : String.valueOf(clocks.get(position - 1)),
+                ApplyOnBootFragment.GPU, getActivity()));
+        return select;
+    }
+
+    private GenericSelectView maliNumber(String title, String path) {
+        GenericSelectView input = new GenericSelectView();
+        input.setTitle(title);
+        String value = String.valueOf(SocNode.readInt(path, 0));
+        input.setValue(value);
+        input.setValueRaw(value);
+        input.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
+        input.setOnGenericValueListener((view, newValue) -> {
+            String number = newValue.trim();
+            if (!number.matches("\\d+")) return;
+            SocNode.write(path, number, ApplyOnBootFragment.GPU, getActivity());
+            view.setValue(number);
+            view.setValueRaw(number);
+        });
+        return input;
     }
 
     private void throttlingInit(List<RecyclerViewItem> items) {

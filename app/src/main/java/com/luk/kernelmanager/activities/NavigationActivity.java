@@ -58,6 +58,9 @@ import com.luk.kernelmanager.fragments.BaseFragment;
 import com.luk.kernelmanager.fragments.kernel.BatteryFragment;
 import com.luk.kernelmanager.fragments.kernel.BoefflaWakelockFragment;
 import com.luk.kernelmanager.fragments.kernel.BusCamFragment;
+import com.luk.kernelmanager.fragments.kernel.BusFreqFragment;
+import com.luk.kernelmanager.fragments.kernel.SchedulerFragment;
+import com.luk.kernelmanager.fragments.kernel.ThermalZonesFragment;
 import com.luk.kernelmanager.fragments.kernel.BusDispFragment;
 import com.luk.kernelmanager.fragments.kernel.BusIntFragment;
 import com.luk.kernelmanager.fragments.kernel.BusMifFragment;
@@ -267,8 +270,17 @@ public class NavigationActivity extends BaseActivity
         if (Hmp.getInstance().supported()) {
             mFragments.add(new NavigationActivity.NavigationFragment(R.string.hmp, HmpFragment.class, R.drawable.ic_cpu));
         }
+        if (SchedulerFragment.supported()) {
+            mFragments.add(new NavigationActivity.NavigationFragment(R.string.ems_scheduler, SchedulerFragment.class, R.drawable.ic_cpu));
+        }
+        if (BusFreqFragment.supported()) {
+            mFragments.add(new NavigationActivity.NavigationFragment(R.string.bus_freq, BusFreqFragment.class, R.drawable.ic_dvfs));
+        }
         if (Thermal.supported()) {
             mFragments.add(new NavigationActivity.NavigationFragment(R.string.thermal, ThermalFragment.class, R.drawable.ic_temperature));
+        }
+        if (ThermalZonesFragment.supported()) {
+            mFragments.add(new NavigationActivity.NavigationFragment(R.string.thermal_zones, ThermalZonesFragment.class, R.drawable.ic_temperature));
         }
         if (GPU.supported()) {
             mFragments.add(new NavigationActivity.NavigationFragment(R.string.gpu, GPUFragment.class, R.drawable.ic_gpu));
