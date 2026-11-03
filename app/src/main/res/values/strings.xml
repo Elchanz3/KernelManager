@@ -1632,4 +1632,9 @@
     <string name="slate_mode_card">Charging control</string>
     <string name="slate_mode">Slate mode</string>
     <string name="slate_mode_summary">Turns the charger input off: the phone runs on battery even when plugged in. Not applied on boot.</string>
+    <string name="slmk_title">Simple LMK</string>
+    <string name="slmk_minfree">Memory freed per reclaim (MiB)</string>
+    <string name="slmk_timeout">Reclaim timeout (ms)</string>
+    <string name="slmk_kills">Processes killed</string>
+    <string name="slmk_last_kill">Last killed</string>
 </resources>

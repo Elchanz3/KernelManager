@@ -901,4 +901,9 @@
     <string name="slate_mode_card">Controle de carga</string>
     <string name="slate_mode">Modo slate</string>
     <string name="slate_mode_summary">Desliga a entrada do carregador: o celular roda na bateria mesmo conectado. Não é aplicado no boot.</string>
+    <string name="slmk_title">Simple LMK</string>
+    <string name="slmk_minfree">Memória liberada por vez (MiB)</string>
+    <string name="slmk_timeout">Tempo limite da recuperação (ms)</string>
+    <string name="slmk_kills">Processos encerrados</string>
+    <string name="slmk_last_kill">Último encerrado</string>
 </resources>

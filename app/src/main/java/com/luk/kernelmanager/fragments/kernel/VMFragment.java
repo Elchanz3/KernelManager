@@ -32,9 +32,11 @@ import com.luk.kernelmanager.utils.Device;
 import com.luk.kernelmanager.utils.kernel.vm.VM;
 import com.luk.kernelmanager.utils.kernel.vm.ZRAM;
 import com.luk.kernelmanager.utils.kernel.vm.ZSwap;
+import com.luk.kernelmanager.utils.kernel.soc.SocNode;
 // import com.luk.kernelmanager.utils.kernel.vm.VNSwap;
 import com.luk.kernelmanager.views.recyclerview.CardView;
 import com.luk.kernelmanager.views.recyclerview.DescriptionView;
+import com.luk.kernelmanager.views.recyclerview.GenericSelectView;
 import com.luk.kernelmanager.views.recyclerview.GenericSelectView2;
 import com.luk.kernelmanager.views.recyclerview.ProgressBarView;
 import com.luk.kernelmanager.views.recyclerview.RecyclerViewItem;
@@ -77,6 +79,59 @@ public class VMFragment extends RecyclerViewFragment {
         // vnswapInit(items);
         zswapInit(items);
         vmTunablesInit(items);
+        if (SocNode.exists(SLMK + "slmk_minfree_mb")) {
+            simpleLmkInit(items);
+        }
+    }
+
+    // Simple LMK (kernel): tunables and kill statistics.
+    private static final String SLMK = "/sys/module/lowmemorykiller/parameters/";
+    private DescriptionView mSlmkKills;
+    private DescriptionView mSlmkLast;
+
+    private void simpleLmkInit(List<RecyclerViewItem> items) {
+        CardView card = new CardView(getActivity());
+        card.setTitle(getString(R.string.slmk_title));
+        card.addItem(slmkNumber(getString(R.string.slmk_minfree), "slmk_minfree_mb", "16 – 2048"));
+        card.addItem(slmkNumber(getString(R.string.slmk_timeout), "slmk_timeout_ms", "50 – 5000"));
+        mSlmkKills = new DescriptionView();
+        mSlmkKills.setTitle(getString(R.string.slmk_kills));
+        mSlmkKills.setSummary(SocNode.read(SLMK + "slmk_kills"));
+        card.addItem(mSlmkKills);
+        mSlmkLast = new DescriptionView();
+        mSlmkLast.setTitle(getString(R.string.slmk_last_kill));
+        String last = SocNode.read(SLMK + "slmk_last_kill");
+        mSlmkLast.setSummary(last.isEmpty() ? "-" : last);
+        card.addItem(mSlmkLast);
+        items.add(card);
+    }
+
+    private GenericSelectView slmkNumber(String title, String node, String range) {
+        GenericSelectView input = new GenericSelectView();
+        input.setTitle(title);
+        input.setSummary(range);
+        String value = SocNode.read(SLMK + node);
+        input.setValue(value);
+        input.setValueRaw(value);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setOnGenericValueListener((view, newValue) -> {
+            String v = newValue.trim();
+            if (!v.matches("\\d+")) return;
+            SocNode.write(SLMK + node, v, ApplyOnBootFragment.VM, getActivity());
+            view.setValue(v);
+            view.setValueRaw(v);
+        });
+        return input;
+    }
+
+    @Override
+    protected void refresh() {
+        super.refresh();
+        if (mSlmkKills != null) {
+            mSlmkKills.setSummary(SocNode.read(SLMK + "slmk_kills"));
+            String last = SocNode.read(SLMK + "slmk_last_kill");
+            mSlmkLast.setSummary(last.isEmpty() ? "-" : last);
+        }
     }
 
     private void memBarsInit (List<RecyclerViewItem> items){
