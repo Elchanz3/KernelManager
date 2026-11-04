@@ -923,4 +923,14 @@
     <string name="luk_mic">Microfones</string>
     <string name="luk_mic_gain">Ganho extra do microfone</string>
     <string name="luk_mic_gain_summary">Somado a todas as entradas de microfone em todas as rotas (ligações, gravação, assistente de voz)</string>
+    <string name="luk_dsp_eq">Equalizador (LuK DSP)</string>
+    <string name="luk_dsp_eq_enable">Ativar equalizador</string>
+    <string name="luk_dsp_eq_summary">EQ de 10 bandas no HAL de áudio para todos os apps (música, vídeo, jogos). Um limitador suave evita distorção forte ao reforçar bandas</string>
+    <string name="luk_dsp_preamp">Pré-amplificação</string>
+    <string name="luk_dsp_preamp_summary">Diminua ao reforçar várias bandas para manter folga</string>
+    <string name="luk_dsp_pitch">Pitch (LuK DSP)</string>
+    <string name="luk_dsp_music_pitch">Pitch sem mudar a velocidade</string>
+    <string name="luk_dsp_music_pitch_summary">Muda só o tom da mídia, em semitons; o ritmo continua o mesmo. Adiciona cerca de 50 ms de atraso enquanto ativo</string>
+    <string name="luk_dsp_voice_pitch">Pitch da voz</string>
+    <string name="luk_dsp_voice_pitch_summary">Muda o tom do microfone em gravações, câmera e chamadas VoIP (não em ligações da operadora)</string>
 </resources>

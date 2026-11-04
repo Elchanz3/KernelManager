@@ -1654,4 +1654,14 @@
     <string name="luk_mic">Microphones</string>
     <string name="luk_mic_gain">Microphone gain offset</string>
     <string name="luk_mic_gain_summary">Added to all microphone inputs for every route (calls, recording, voice assistant)</string>
+    <string name="luk_dsp_eq">Equalizer (LuK DSP)</string>
+    <string name="luk_dsp_eq_enable">Enable equalizer</string>
+    <string name="luk_dsp_eq_summary">10-band EQ in the audio HAL for every app (music, video, games). A soft limiter prevents harsh clipping when bands are boosted</string>
+    <string name="luk_dsp_preamp">Preamp</string>
+    <string name="luk_dsp_preamp_summary">Lower it when boosting many bands to keep headroom</string>
+    <string name="luk_dsp_pitch">Pitch (LuK DSP)</string>
+    <string name="luk_dsp_music_pitch">Pitch without speed change</string>
+    <string name="luk_dsp_music_pitch_summary">Changes only the pitch of media, in semitones; tempo stays the same. Adds about 50 ms of delay while active</string>
+    <string name="luk_dsp_voice_pitch">Voice pitch</string>
+    <string name="luk_dsp_voice_pitch_summary">Changes the pitch of the microphone for recordings, camera and VoIP calls (not carrier calls)</string>
 </resources>

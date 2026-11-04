@@ -5,6 +5,8 @@ import com.luk.kernelmanager.fragments.ApplyOnBootFragment;
 import com.luk.kernelmanager.fragments.DescriptionFragment;
 import com.luk.kernelmanager.fragments.recyclerview.RecyclerViewFragment;
 import com.luk.kernelmanager.utils.kernel.soc.SocNode;
+import com.luk.kernelmanager.utils.root.Control;
+import com.luk.kernelmanager.utils.root.RootUtils;
 import com.luk.kernelmanager.views.recyclerview.CardView;
 import com.luk.kernelmanager.views.recyclerview.RecyclerViewItem;
 import com.luk.kernelmanager.views.recyclerview.SeekBarView;
@@ -39,6 +41,10 @@ public class LukAudioFragment extends RecyclerViewFragment {
     @Override
     protected void addItems(List<RecyclerViewItem> items) {
         pitchInit(items);
+        if (SocNode.exists(DSP_LIB)) {
+            dspEqInit(items);
+            dspPitchInit(items);
+        }
         ampInit(items, getString(R.string.luk_amp_speaker), BASE + "amp_right/luk/");
         ampInit(items, getString(R.string.luk_amp_receiver), BASE + "amp_left/luk/");
         micInit(items);
@@ -46,6 +52,134 @@ public class LukAudioFragment extends RecyclerViewFragment {
 
     private void write(String path, String value) {
         SocNode.write(path, value, ApplyOnBootFragment.LUK_AUDIO, getActivity());
+    }
+
+    /* LuK DSP module (vendor effect HAL), configured through vendor.audio.luk.* */
+    private static final String DSP_LIB = "/vendor/lib/soundfx/libluk_dsp.so";
+    private static final String PROP = "vendor.audio.luk.";
+    private static final String[] EQ_BANDS = {
+            "31 Hz", "62 Hz", "125 Hz", "250 Hz", "500 Hz",
+            "1 kHz", "2 kHz", "4 kHz", "8 kHz", "16 kHz",
+    };
+    private final int[] mEq = new int[EQ_BANDS.length]; /* 0.1 dB */
+
+    private void setProp(String name, String value) {
+        Control.runSetting("setprop " + PROP + name + " " + value,
+                ApplyOnBootFragment.LUK_AUDIO, PROP + name, getActivity());
+    }
+
+    private int propInt(String name, int def) {
+        try {
+            return Integer.parseInt(RootUtils.getProp(PROP + name).trim());
+        } catch (Exception e) {
+            return def;
+        }
+    }
+
+    private void writeEq() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < mEq.length; i++) {
+            if (i > 0) sb.append(',');
+            sb.append(mEq[i]);
+        }
+        setProp("eq", sb.toString());
+    }
+
+    private SeekBarView propSeek(String title, String summary, List<String> labels, int index,
+                                 SeekBarView.OnSeekBarListener listener) {
+        SeekBarView seek = new SeekBarView();
+        seek.setTitle(title);
+        if (summary != null) seek.setSummary(summary);
+        seek.setItems(labels);
+        seek.setProgress(Math.max(0, Math.min(labels.size() - 1, index)));
+        seek.setOnSeekBarListener(listener);
+        return seek;
+    }
+
+    private abstract static class StopListener implements SeekBarView.OnSeekBarListener {
+        @Override
+        public void onMove(SeekBarView seekBarView, int position, String value) {
+        }
+    }
+
+    private void dspEqInit(List<RecyclerViewItem> items) {
+        CardView card = new CardView(getActivity());
+        card.setTitle(getString(R.string.luk_dsp_eq));
+
+        SwitchView on = new SwitchView();
+        on.setTitle(getString(R.string.luk_dsp_eq_enable));
+        on.setSummary(getString(R.string.luk_dsp_eq_summary));
+        on.setChecked(propInt("eq_on", 0) == 1);
+        on.addOnSwitchListener((switchView, isChecked) -> setProp("eq_on", isChecked ? "1" : "0"));
+        card.addItem(on);
+
+        String[] saved = RootUtils.getProp(PROP + "eq").trim().split(",");
+        for (int i = 0; i < mEq.length; i++) {
+            try {
+                mEq[i] = i < saved.length ? Integer.parseInt(saved[i].trim()) : 0;
+            } catch (NumberFormatException e) {
+                mEq[i] = 0;
+            }
+        }
+
+        /* -12..+12 dB in 0.5 dB steps */
+        List<String> gains = new ArrayList<>();
+        for (int v = -24; v <= 24; v++) gains.add(String.format(Locale.US, "%+.1f dB", v / 2f));
+
+        for (int i = 0; i < EQ_BANDS.length; i++) {
+            final int band = i;
+            card.addItem(propSeek(EQ_BANDS[i], null, gains, Math.round(mEq[i] / 5f) + 24,
+                    new StopListener() {
+                        @Override
+                        public void onStop(SeekBarView seekBarView, int position, String value) {
+                            mEq[band] = (position - 24) * 5;
+                            writeEq();
+                        }
+                    }));
+        }
+
+        /* preamp -12..+6 dB */
+        List<String> pre = new ArrayList<>();
+        for (int v = -24; v <= 12; v++) pre.add(String.format(Locale.US, "%+.1f dB", v / 2f));
+        card.addItem(propSeek(getString(R.string.luk_dsp_preamp),
+                getString(R.string.luk_dsp_preamp_summary), pre,
+                Math.round(propInt("preamp", 0) / 5f) + 24, new StopListener() {
+                    @Override
+                    public void onStop(SeekBarView seekBarView, int position, String value) {
+                        setProp("preamp", String.valueOf((position - 24) * 5));
+                    }
+                }));
+
+        items.add(card);
+    }
+
+    private void dspPitchInit(List<RecyclerViewItem> items) {
+        CardView card = new CardView(getActivity());
+        card.setTitle(getString(R.string.luk_dsp_pitch));
+
+        /* -12..+12 semitones in half-semitone steps (50 cents) */
+        List<String> semis = new ArrayList<>();
+        for (int v = -24; v <= 24; v++) semis.add(String.format(Locale.US, "%+.1f st", v / 2f));
+
+        card.addItem(propSeek(getString(R.string.luk_dsp_music_pitch),
+                getString(R.string.luk_dsp_music_pitch_summary), semis,
+                Math.round(propInt("music_pitch", 0) / 50f) + 24, new StopListener() {
+                    @Override
+                    public void onStop(SeekBarView seekBarView, int position, String value) {
+                        setProp("music_pitch", String.valueOf((position - 24) * 50));
+                    }
+                }));
+
+        card.addItem(propSeek(getString(R.string.luk_dsp_voice_pitch),
+                getString(R.string.luk_dsp_voice_pitch_summary), semis,
+                Math.round(propInt("voice_pitch", 0) / 50f) + 24, new StopListener() {
+                    @Override
+                    public void onStop(SeekBarView seekBarView, int position, String value) {
+                        setProp("voice_pitch", String.valueOf((position - 24) * 50));
+                    }
+                }));
+
+        items.add(card);
     }
 
     private void pitchInit(List<RecyclerViewItem> items) {
