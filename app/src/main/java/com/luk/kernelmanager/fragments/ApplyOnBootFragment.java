@@ -46,6 +46,7 @@ import com.luk.kernelmanager.fragments.kernel.GPUFragment;
 // import com.luk.kernelmanager.fragments.kernel.SpectrumFragment;
 import com.luk.kernelmanager.fragments.kernel.DvfsFragment;
 import com.luk.kernelmanager.fragments.kernel.BusFreqFragment;
+import com.luk.kernelmanager.fragments.kernel.LukAudioFragment;
 import com.luk.kernelmanager.fragments.kernel.GameFragment;
 import com.luk.kernelmanager.fragments.kernel.SchedulerFragment;
 import com.luk.kernelmanager.fragments.kernel.ThermalZonesFragment;
@@ -107,6 +108,7 @@ public class ApplyOnBootFragment extends BaseFragment {
     public static final String BUS_FREQ = "busfreq_onboot";
     public static final String THERMAL_ZONES = "thermalzones_onboot";
     public static final String SCHED = "sched_onboot";
+    public static final String LUK_AUDIO = "lukaudio_onboot";
 
     private static final HashMap<Class, String> sAssignments = new HashMap<>();
 
@@ -143,6 +145,7 @@ public class ApplyOnBootFragment extends BaseFragment {
         sAssignments.put(BusFreqFragment.class, BUS_FREQ);
         sAssignments.put(ThermalZonesFragment.class, THERMAL_ZONES);
         sAssignments.put(SchedulerFragment.class, SCHED);
+        sAssignments.put(LukAudioFragment.class, LUK_AUDIO);
     }
 
     public static String getAssignment(Class fragment) {

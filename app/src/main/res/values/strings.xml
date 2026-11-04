@@ -1637,4 +1637,21 @@
     <string name="slmk_timeout">Reclaim timeout (ms)</string>
     <string name="slmk_kills">Processes killed</string>
     <string name="slmk_last_kill">Last killed</string>
+    <string name="luk_audio">LuK Audio</string>
+    <string name="luk_audio_summary">ExtremeKernel audio controls applied in the drivers. Pitch shifts the audio PLL, so pitch and speed change together on the speakers and earpiece (Bluetooth and USB audio are not affected). Amplifier and microphone values are offsets added on top of what the system sets for each route.</string>
+    <string name="luk_pitch">Pitch and speed</string>
+    <string name="luk_pitch_summary">Applied live. Usable range on this device is -24% to +21%; outside it the amplifiers cut out</string>
+    <string name="luk_amp_speaker">Bottom speaker</string>
+    <string name="luk_amp_receiver">Earpiece speaker</string>
+    <string name="luk_amp_gain">Analog gain offset</string>
+    <string name="luk_amp_gain_summary">Added to the system gain (18–19 dB on media, 20 dB maximum)</string>
+    <string name="luk_amp_digital">Digital volume offset</string>
+    <string name="luk_amp_digital_summary">Positive values can clip loud audio; speaker protection stays active</string>
+    <string name="luk_boost_fixed">Fixed boost (11 V)</string>
+    <string name="luk_boost_fixed_summary">Off = Class H (stock): boost follows the signal. On = always at full voltage: more headroom on peaks, more heat and battery use</string>
+    <string name="luk_classh_headroom">Class H headroom</string>
+    <string name="luk_classh_headroom_summary">How early the boost rises ahead of the signal (stock 11). Higher reduces clipping on peaks</string>
+    <string name="luk_mic">Microphones</string>
+    <string name="luk_mic_gain">Microphone gain offset</string>
+    <string name="luk_mic_gain_summary">Added to all microphone inputs for every route (calls, recording, voice assistant)</string>
 </resources>

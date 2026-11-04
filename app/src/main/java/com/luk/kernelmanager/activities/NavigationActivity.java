@@ -83,6 +83,7 @@ import com.luk.kernelmanager.fragments.kernel.WakelockFragment;
 import com.luk.kernelmanager.fragments.kernel.MiscFragment;
 import com.luk.kernelmanager.fragments.kernel.ScreenFragment;
 import com.luk.kernelmanager.fragments.kernel.SoundFragment;
+import com.luk.kernelmanager.fragments.kernel.LukAudioFragment;
 import com.luk.kernelmanager.fragments.kernel.SpectrumFragment;
 import com.luk.kernelmanager.fragments.kernel.ThermalFragment;
 import com.luk.kernelmanager.fragments.kernel.VMFragment;
@@ -302,6 +303,9 @@ public class NavigationActivity extends BaseActivity
         }
         if (Sound.getInstance().supported()) {
             mFragments.add(new NavigationActivity.NavigationFragment(R.string.sound, SoundFragment.class, R.drawable.ic_music));
+        }
+        if (LukAudioFragment.supported()) {
+            mFragments.add(new NavigationActivity.NavigationFragment(R.string.luk_audio, LukAudioFragment.class, R.drawable.ic_music));
         }
         if (Spectrum.supported()) {
             mFragments.add(new NavigationActivity.NavigationFragment(R.string.spectrum, SpectrumFragment.class, R.drawable.ic_spectrum_logo));

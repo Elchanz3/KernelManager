@@ -906,4 +906,21 @@
     <string name="slmk_timeout">Tempo limite da recuperação (ms)</string>
     <string name="slmk_kills">Processos encerrados</string>
     <string name="slmk_last_kill">Último encerrado</string>
+    <string name="luk_audio">LuK Áudio</string>
+    <string name="luk_audio_summary">Controles de áudio do ExtremeKernel aplicados nos drivers. O pitch muda o PLL de áudio, então tom e velocidade mudam juntos no alto-falante e no auricular (Bluetooth e áudio USB não são afetados). Os valores dos amplificadores e do microfone são somados aos que o sistema define em cada rota.</string>
+    <string name="luk_pitch">Pitch e velocidade</string>
+    <string name="luk_pitch_summary">Aplicado na hora. A faixa utilizável neste aparelho é de -24% a +21%; fora dela os amplificadores cortam o som</string>
+    <string name="luk_amp_speaker">Alto-falante inferior</string>
+    <string name="luk_amp_receiver">Alto-falante da tela (auricular)</string>
+    <string name="luk_amp_gain">Ganho analógico extra</string>
+    <string name="luk_amp_gain_summary">Somado ao ganho do sistema (18–19 dB em mídia, máximo 20 dB)</string>
+    <string name="luk_amp_digital">Volume digital extra</string>
+    <string name="luk_amp_digital_summary">Valores positivos podem distorcer áudio alto; a proteção do alto-falante continua ativa</string>
+    <string name="luk_boost_fixed">Boost fixo (11 V)</string>
+    <string name="luk_boost_fixed_summary">Desligado = Class H (original): o boost acompanha o sinal. Ligado = sempre na tensão máxima: mais folga nos picos, mais calor e gasto de bateria</string>
+    <string name="luk_classh_headroom">Folga do Class H</string>
+    <string name="luk_classh_headroom_summary">Quão cedo o boost sobe antes do sinal (original 11). Valores maiores reduzem o corte nos picos</string>
+    <string name="luk_mic">Microfones</string>
+    <string name="luk_mic_gain">Ganho extra do microfone</string>
+    <string name="luk_mic_gain_summary">Somado a todas as entradas de microfone em todas as rotas (ligações, gravação, assistente de voz)</string>
 </resources>
